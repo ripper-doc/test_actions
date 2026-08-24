@@ -6,14 +6,23 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
         steps:
-        -   name: Welcome Message
-            run: echo "My first Github Actions Job"
-        
-        -   name: Cloning the repo
+        -   name: Checkout the repo
             uses: actions/checkout@v4
+
+        # mentioning all the commands in a single step below will execute all in the sequence now
+        -   name: Welcome Message
+            run: |
+                echo "My first Github Actions Job"
+                ls -ltra
+                cat README.md
         
-        -   name: List the files (hidden also)
-            run: ls -la
+        # initially, this step will fail since this third-party library cowsay is not installed on the runner so it needs to be done first before the command can run
+        -   name: Generate ASCII Artwork
+            run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR" >> dragon.txt
         
-        -   name: Read file
-            run: cat README.md
+        # commenting below steps as commands for these have already been mentioned in lines 15 to 17
+        # -   name: List the files (hidden also)
+        #     run: ls -la
+        
+        # -   name: Read file
+        #     run: cat README.md
