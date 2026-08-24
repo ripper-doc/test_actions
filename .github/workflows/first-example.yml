@@ -1,0 +1,16 @@
+name: My First Worklfow
+
+on: [push, fork]
+
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+        -   name: Welcome Message
+            run: echo "My first Github Actions Job"    
+        
+        -   name: List the files
+            run: ls
+        
+        -   name: Read file
+            run: cat README.md
