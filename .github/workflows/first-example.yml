@@ -7,10 +7,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   name: Welcome Message
-            run: echo "My first Github Actions Job"    
+            run: echo "My first Github Actions Job"
         
-        -   name: List the files
-            run: ls
+        -   name: Cloning the repo
+            uses: actions/checkout@v4
+        
+        -   name: List the files (hidden also)
+            run: ls -la
         
         -   name: Read file
             run: cat README.md
